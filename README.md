@@ -1,99 +1,67 @@
-# vue-admin-template
+# 尚品汇后台管理系统
 
-English | [简体中文](./README-zh.md)
+### vue-admin-template模板
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+> 这是一个极简的 vue admin 管理后台。它只包含了 Element UI & axios & iconfont & permission control & lint，这些搭建后台必要的东西。
 
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+[国内访问](https://panjiachen.gitee.io/vue-admin-template)
 
+### 文件夹认识
 
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
+- build	---index.js	webpack配置文件【很少修改】
+- mock   ---模拟一些mock.js实现的假数据，实际开发是真实接口
+- node_modules   ---项目依赖模块
+- public   ---ico静态图标，静态页面，经常放静态资源，打包时不会编译
+- src   ---源代码
+  - api文件夹   ---请求相关文件夹
+  - assets文件夹   ---共享静态资源文件夹，在打包时会进行编译
+  - components文件夹  ---非路由组件或全局组件
+  - icons文件夹   ---svg矢量图
+  - layout文件夹   ---存放一些组件与混入
+  - router文件夹   ---路由文件夹
+  - store文件夹   ---vuex状态管理
+  - style文件夹   ---样式相关文件
+  - utils文件夹   ---一些封装的js【axios】
+  - views文件夹   ---路由组件
+  - App.vue文件   ---根组件
+  - main.js文件   ---入口文件
+  - permission.js文件   ---与导航守卫相关 权限管理
+  - settins.js文件   ---设置文件
+- test文件夹   ---测试文件
+- 其他配置文件
 
-<p align="center">
-  <b>SPONSORED BY</b>
-</p>
-<p align="center">
-   <a href="https://finclip.com?from=vue_element" title="FinClip" target="_blank">
-      <img height="200px" src="https://gitee.com/panjiachen/gitee-cdn/raw/master/vue%E8%B5%9E%E5%8A%A9.png" title="FinClip">
-   </a>
-</p>
+index.scss文件错误、将.*app-container*修改为.*app-main*
 
-## Build Setup
+### 登录业务退出业务
 
-```bash
-# clone the project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+静态组件
 
-# enter the project directory
-cd vue-admin-template
+更换api	[Swagger UI](http://39.98.123.211:8170/swagger-ui.html)
 
-# install dependency
-npm install
+代理跨域配置  接口为http://gmall-h5-api.atguigu.cn
 
-# develop
-npm run dev
+axios二次封装的修改
+
+### 路由组件的修改
+
+删除不需要的路由组件
+
+添加项目路由
+
+### 使用flag来判断编辑模式还是查看模式
+
+新增时直接向新增数据中添加flag属性
+
+修改时使用$set添加
+
+### 将数据设置为响应式数据
+
+```
+this.$set(item, "flag", false);
 ```
 
-This will automatically open http://localhost:9528
+- item  对象
+- flag 新增属性
+- false 属性值
 
-## Build
-
-```bash
-# build for test environment
-npm run build:stage
-
-# build for production environment
-npm run build:prod
-```
-
-## Advanced
-
-```bash
-# preview the release environment effect
-npm run preview
-
-# preview the release environment effect + static resource analysis
-npm run preview -- --report
-
-# code format check
-npm run lint
-
-# code format check and auto fix
-npm run lint -- --fix
-```
-
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
-
-## Demo
-
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
-
-## Extra
-
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
-
-For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
-
-## Related Project
-
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-
-- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
-
-- [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
-
-- [awesome-project](https://github.com/PanJiaChen/vue-element-admin/issues/2312)
-
-## Browsers support
-
-Modern browsers and Internet Explorer 10+.
-
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
-
-## License
-
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
-
-Copyright (c) 2017-present PanJiaChen
+### 表单元素自动聚焦

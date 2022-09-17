@@ -31,7 +31,9 @@ export default {
       'sidebar'
     ]),
     routes() {
-      return this.$router.options.routes
+      // return this.$router.options.routes
+      // 后去仓库计算后的路由
+      return this.$store.state.user.endRouter
     },
     activeMenu() {
       const route = this.$route

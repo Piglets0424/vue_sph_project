@@ -36,11 +36,20 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      // 匹配所有以 '/api'开头的请求路径
+      '/dev-api': {
+        // 代理目标的基础路径
+        // http://sph-h5-api.atguigu.cn
+        target: 'http://gmall-h5-api.atguigu.cn',
+        pathRewrite: { '^/dev-api': '' },
+      },
+    },
+    after: require('./mock/mock-server.js')
   },
   configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
+    //在 webpack 的名称字段中提供应用的标题，以便
+   // 可以在索引中访问它.html以注入正确的标题。
     name: name,
     resolve: {
       alias: {
@@ -87,7 +96,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+            // “runtime”必须与 runtimeChunk 名称相同。默认值为“运行时”
               inline: /runtime\..*\.js$/
             }])
             .end()
